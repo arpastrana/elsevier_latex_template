@@ -1,0 +1,31 @@
+\begin{tabular}{@{}cll@{}}
+    \toprule
+    
+    Type &
+    Target &
+    Constraint function \\
+    
+    \addlinespace[0.25em]
+    \midrule
+    \addlinespace[0.5em]
+    
+    Spiciness&
+    Taco temperature, $\bar{\nodeposition_i}$&
+    $\constraint_1( \equilibriumattributes(\optimizationvariables)) = \norm{\nodeposition_i - \bar{\nodeposition}_i}$\\
+    
+    \addlinespace[0.25em]
+    \cmidrule(lr){1-3}
+    \addlinespace[0.25em]
+
+    \multirow{2}{*}[-6pt]{Heat}&
+    Tortilla force, $\bar{\edgeforce}_{i, j}^{\text{t}}$&
+    $\constraint_4(\equilibriumattributes(\optimizationvariables)) = \trailedgeforce_{i, j} - \bar{\edgeforce}_{i, j}^{\text{t}}$\\
+    \addlinespace[0.5em]
+    
+    &
+    Tortilla form, $\bar{\edgeloadpath}_{i, j}$&
+    $\constraint_5(\equilibriumattributes(\optimizationvariables)) = \edgeforce_{i, j}\edgelength_{i, j} - \bar{\edgeloadpath}_{i, j}$\\
+    \addlinespace[0.5em]
+    
+    \bottomrule
+\end{tabular}

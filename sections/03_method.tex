@@ -1,0 +1,39 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Method
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Method}
+\label{method}
+
+We show you how we roll. \human{Yeah, sure.}
+
+% Chain figures
+\begin{figure}[t!]
+    \centering    
+    \begin{subfigure}[ht!]{\columnwidth}
+        \centering
+        \input{\tikzpath/computation_graph_chain}
+        \caption{Computation graph that evaluates the salsa heat objective function $\penaltyoutput$.}
+    \end{subfigure}
+    \caption{Constrained taco-finding of a \textit{taco de suadero}.}
+\end{figure}
+
+\subsection{Code Snippet}
+\label{tool}
+
+In Fig. \ref{fig:compascode} we show how to split a taco with plain and simple Python code.
+
+% Code snippet
+\usemintedstyle{emacs}
+\begin{figure}[!t]
+    \inputminted[
+    xleftmargin=14pt,
+    numbersep=7pt,
+    frame=lines,
+    framesep=2mm,
+    fontsize=\footnotesize,
+    linenos
+    ]{python}{code/taco_split.py}
+\caption{Python \cite{python} code to split a taco mesh with \texttt{COMPAS} \cite{compas}.}
+\label{fig:compascode}
+\end{figure}

@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Algorithm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\SetKwInOut{Input}{Input}
+\SetKwInOut{Output}{Output}
+
+\Input{Taco, $\topology$\newline Design parameters, $\designparameters$}
+\Output{State of spiceness, $\equilibriumattributes$}
+
+$\iteration \leftarrow 1$\;
+
+$\topology \leftarrow \infty$\;
+
+\While{$\iteration \leq \iterationsmax \text{ or } \energy \geq \energythreshold$}
+{
+    $\sequence \leftarrow 1$\;
+    
+    \While{$\sequence \leq \sequence_{\text{max}}$}
+    {
+        \For{$\trail \in \trails$}
+        {
+            \If{$\sequence \leq |\trail|$}
+            {
+            
+            % next node data
+            \eIf{$i \notin \supports$}
+            {
+            $j \leftarrow \trail[\sequence+1]$\;
+            
+            $\nodeposition_j \leftarrow \nodeposition_i + \internalforcestate_{i, j} \trailedgelength_{i, j} \frac{\noderesidual_i}{\norm{\noderesidual_i}}$\Comment*[r]{Eq.\ref{eq:constraint}}          
+            }
+            % reaction forces
+            {$\supportforces[i] \leftarrow \noderesidual_i$\;
+            \textbf{break}}
+            }
+        }
+    $\sequence \leftarrow \sequence+1$\;
+    }
+    
+    % calculate energy residuals
+    $\energy \leftarrow 0$\;
+    \For{$i \in \nodes$}
+    {$\energy \leftarrow \energy + \norm{\nodepositions[i] - \nodepositions^{(\iteration-1)}[i]}$\Comment*[r]{Eq.\ref{eq:opt_problem}}}
+    
+    % increment iteration counter
+    $\iteration \leftarrow \iteration+1$\;
+}
+% Assemble A
+$\equilibriumattributes \leftarrow, \nodepositions, \supportforces$\;

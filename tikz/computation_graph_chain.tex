@@ -1,0 +1,54 @@
+\begin{tikzpicture}
+
+\tikzstyle{io} = [circle, minimum size=6mm]
+\tikzstyle{eq} = [circle, minimum size=6mm, fill=orange!30]
+\tikzstyle{constraint} = [circle, minimum size=6mm, fill=teal!30] 
+\tikzstyle{objective} = [circle, minimum size=6mm, fill=pink!60] 
+\tikzstyle{extra} = [circle, minimum size=6mm, draw=black, line width=.5pt, dash pattern=on 1pt off 2pt] 
+\tikzstyle{arrow} = [thick, ->, >=stealth, shorten >=1pt, rounded corners]
+
+% Make nodes
+\node (v1) [eq] at (0, 0) {$v_1$};
+\node (v3) [eq] at (0, -1.2) {$v_3$};
+
+\node (v2) [eq, right=0.4 of v1] {$v_2$};
+\node (v4) [eq, right=0.4 of v3] {$v_4$};
+\node (v5) [constraint, right=0.4 of v4] {$v_5$};
+\node (v6) [constraint, right=0.4 of v5] {$v_6$};
+\node (v7) [constraint, right=0.4 of v6] {$v_7$};
+\node (v8) [objective, below=0.4 of v7] {$v_8$};
+\node (v9) [objective, right=0.4 of v8] {$v_9$};
+
+% I/O Nodes
+\node (input1) [io, left=0.4 of v1] {$\edgelength_{1, 2}$};
+\node (input2) [io, left=0.4 of v3] {$\edgelength_{2, 3}$};
+\node (output) [io, right=0.4 of v9] {$\penaltyoutput$};
+
+% Extra input nodes
+\node (r1) [extra, above=0.4 of v1] {$\noderesidual_1$};
+\node (p1) [extra, above=0.4 of v2] {$\nodeposition_1$};
+\node (r2) [extra, below=0.4 of v3] {$\noderesidual_2$};
+\node (y3) [extra, below=0.4 of v5] {$\bar{\nodeposition}_3$};
+
+% Connect nodes
+\draw[arrow] (input1) -- (v1);
+\draw[arrow] (input2) -- (v3);
+
+\draw[arrow] (v1) -- (v2);
+\draw[arrow] (v3) -- (v4);
+\draw[arrow] (v2) -- (v4);
+\draw[arrow] (v4) -- (v5);
+\draw[arrow] (v5) -- (v6);
+\draw[arrow] (v6) -- (v7);
+\draw[arrow] (v7) -- (v8);
+\draw[arrow] (v8) -- (v9);
+
+\draw[arrow] (v9) -- (output);
+
+\draw[arrow] (r1) -- (v1);
+\draw[arrow] (p1) -- (v2);
+\draw[arrow] (r2) -- (v3);
+\draw[arrow] (y3) -- (v5);
+
+
+\end{tikzpicture}

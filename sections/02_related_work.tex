@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Related Work
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Related work}
+\label{relatedwork}
+
+Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+\begin{itemize}
+    \itemsep 0em
+    \item Jalapeno peppers.
+    \item Bell peppers.
+    \item Red hot chilli peppers.
+\end{itemize}
+
+% Taco algorithm
+\subsection{Taco-making algorithm}
+\label{tacomaking}
+
+This is it, people.
+
+\begin{algorithm}[!ht]
+    \caption{The ultimate taco-making algorithm}
+    \label{taco_algo}
+    \input{\algopath/taco_making}
+\end{algorithm}
+
+\subsubsection{Equations}
+\label{equations}
+
+Here are some examples that show that besides knowing how to make tacos, we can also do the math.
+
+\begin{equation}
+\label{eq:constraint}
+    \constraint_i(\equilibriumattributes(\optimizationvariables)) = 0
+\end{equation}
+
+Every nonlinear equality constraint $g_i$ is weighted by a penalty factor $w_i$ and aggregated in a single objective function that is minimized to solve a constrained taco-making problem.
+
+\begin{equation}
+\label{eq:opt_problem}
+    \mathcal{L}(\optimizationvariables)
+    =
+    \frac{1}{2} \sum_i w_i \, g_i( \equilibriumattributes(\optimizationvariables))^2
+\end{equation}

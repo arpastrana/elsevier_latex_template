@@ -1,0 +1,193 @@
+%% 
+%% Copyright 2007-2019 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% USEFUL DOCUMENT CLASSES  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Use the option review to obtain double line spacing 
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% Add the authoryear tag if doing Harvard style
+
+\documentclass[final,5p,times,twocolumn]{elsarticle} % Final
+% \documentclass[final,5p,times,twocolumn, doubleblind]{elsarticle} %% double-blind review
+% \documentclass[draft,5p,times,twocolumn]{elsarticle} %% turn off figures
+
+\biboptions{sort&compress}
+
+% USEFUL PATHS
+\graphicspath{{./figures/}}
+\newcommand*{\sectionpath}{./sections}
+\newcommand*{\bibliopath}{./biblio}
+\newcommand*{\algopath}{./algorithms}
+\newcommand*{\tablepath}{./tables}
+\newcommand*{\tikzpath}{./tikz}
+\newcommand*{\appendixpath}{./appendix}
+
+% MATH NOMENCLATURE
+\input{./math/nomenclature}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{natbib}
+
+%% MATH PACKAGES
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+% MATH - REDEFINE COMMANDS 
+% norm command
+\let\oldnorm\norm   % <-- Store original \norm as \oldnorm
+\let\norm\undefined % <-- "Undefine" \norm
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute
+
+\usepackage[dvipsnames]{xcolor}  % More defined colors
+\usepackage{pdflscape} % for rotating to landscape page (for large tables)
+\usepackage{enumitem} % to change format of enumerates
+\usepackage{ragged2e}
+\usepackage[hyphens]{url} % add hyphens to long url in bibliography
+\usepackage[colorlinks=True, breaklinks=true]{hyperref} 
+\hypersetup{allcolors=blue, pdfauthor=author}
+\usepackage[nameinlink]{cleveref}
+
+%% ALGORITHM PACKAGES
+\usepackage[linesnumbered,ruled,noend]{algorithm2e} % for pseudo-code
+\SetKwComment{Comment}{$\triangleright$\ }{}
+
+%% FIGURE PACKAGES
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float} % precise figure placement
+\usepackage[export]{adjustbox} % shift a figure left or right
+\usepackage{stfloats} % To enable figures at the bottom of page
+
+%% DIAGRAM PACKAGES
+\usepackage{forest}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, calc, positioning, patterns}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+\newcommand\tikzmark[1]{\tikz[remember picture] \node (#1) {};}  % in-table arrows
+
+%% CUSTOM COLORS
+\definecolor{colororigintaco}{RGB}{153,150,255}
+\definecolor{colorsupporttaco}{RGB}{0,150,80}
+\definecolor{colortensiontortilla}{RGB}{227,6,75}
+\definecolor{colorcompressiontortilla}{RGB}{12,120,184}
+\definecolor{colorauxsalsa}{RGB}{255,155,15}
+
+%% TABLE PACKAGES
+\usepackage{booktabs} % For tables
+\usepackage{multirow} %for multirow tables
+
+%% CODE PACKAGES
+\usepackage{minted}
+% the 2 commands below obey to a hacky recipe to submit latex file to the Arxiv
+% \usepackage[finalizecache,cachedir=.]{minted}
+% \usepackage[frozencache,cachedir=.]{minted}
+
+%% APPENDIX PACKAGES
+\usepackage{appendix}
+
+% COLORED IN-TEXT COMMENTS
+\newcommand{\human}[1]{{\footnotesize\color{teal}[Author 1: #1]}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\journal{A Fancy Journal}
+\begin{document}
+\begin{frontmatter}
+
+%% Title, authors and addresses
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+
+\title{My Wonderful Tacos Research Project}
+
+\author[1]{First Author\corref{cor1}}
+\ead{john@smith.edu}
+\author[2]{Second Author}
+
+\cortext[cor1]{Corresponding author}
+
+\address[1]{Fancy School, Awesome University, Wakanda}
+\address[1]{School of Engineering, Monsters University, Tomorrowland}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ABSTRACT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+This is the abstract.
+We propose a fabulous approach to make tacos.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% KEYWORDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% keywords here, in the form: keyword \sep keyword
+
+\begin{keyword}
+structural design \sep
+optimization \sep
+automatic differentiation
+\end{keyword}
+
+\end{frontmatter}
+\raggedbottom
+\hyphenpenalty=1000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ARTICLE BODY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{\sectionpath/01_intro}
+\input{\sectionpath/02_related_work}
+\input{\sectionpath/03_method}
+\input{\sectionpath/04_results}
+\input{\sectionpath/05_conclusion}
+\input{\sectionpath/06_acknowledgement}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If you have bibdatabase file and want bibtex to generate the
+%% The .bib file is found in the folder, export from citation manager to BIBTEX
+
+\bibliographystyle{\bibliopath/elsarticle-num}
+\bibliography{\bibliopath/automatic_entries, \bibliopath/manual_entries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+
+\input{\appendixpath/01_appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ARTICLE ENDING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+\endinput
